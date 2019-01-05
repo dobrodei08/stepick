@@ -1,7 +1,6 @@
-def app(environ, start_response):
-    q_string = environ.get('QUERY_STRING')
-    pairs_list = q_string.split("&")
-    body = ""
+def app
+
+ody = ""
     for pair in pairs_list:
         body += pair + "\n"
 
@@ -9,3 +8,85 @@ def app(environ, start_response):
 
     start_response('200 OK', response_string)
     return [body.strip()]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
