@@ -1,11 +1,5 @@
-def app(environ, start_response):
-    q_string = environ.get('QUERY_STRING')
-    pairs_list = q_string.split("&")
-    body = ""
-    for pair in pairs_list:
-        body += pair + "\n"
-
-    response_string = [('Content-type', 'text/plain')]
-
-    start_response('200 OK', response_string)
-    return [body.strip()]
+def app(env, start_response):
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    resp = env['QUERY_STRING'].split("&")
+    resp = [item+"\r\n" for item in resp]
+    return resp
