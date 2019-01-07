@@ -1,0 +1,7 @@
+<h1>{{ qwest.title }}</h1>
+<p>{{ qwest.text }}</p>
+<ul>
+{% for q in ans.all %}
+<li>{{ q.text }}</li>
+{% endfor %}
+<ul>
