@@ -15,6 +15,8 @@ def newqwest(request):
         page = int(request.GET.get('page'))
     except ValueError:
         raise Http404
+    except TypeError:
+        page = 1
     limit = 10
     qw = Question.objects.all()
     qw = Question.objects.new()
