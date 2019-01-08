@@ -17,13 +17,13 @@ class AskForm(forms.Form):
 
 class AnswerForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea)
-    question = forms.CharField(max_length=100)
+    question_id = forms.IntegerField(widget=forms.HiddenInput())
     def clean_text(self):
         text = self.cleaned_data['text']
         return text
     def clean_question(self):
-        question = self.cleaned_data['question']
-        return question
+        question_id = self.cleaned_data['question_id']
+        return question_id
     def save(self):
         answer = Answer(**self.cleaned_data)
         answer.save()

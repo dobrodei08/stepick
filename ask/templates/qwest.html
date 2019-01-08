@@ -2,7 +2,7 @@
 <p>{{ qwest.text }}</p>
 <ul>
 {% for q in ans.all %}
-<li>{{ q.text }} - {{q.question}}</li>
+<li>{{ q.text }}</li>
 {% endfor %}
 <ul>
 {% if e in form.non_field_errors %}
