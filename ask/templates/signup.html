@@ -1,15 +1,7 @@
-<h1>{{ qwest.title }}</h1>
-<p>{{ qwest.author }}</p>
-<p>{{ qwest.text }}</p>
-<ul>
-{% for q in ans.all %}
-<li>{{ q.text }}</li>
-{% endfor %}
-<ul>
 {% if e in form.non_field_errors %}
 <div class="alert alert-danger">{{ e }}</div>
 {% endif %}
-<form class="form-horizontal" method="post" action="/question/1/">
+<form class="form-horizontal" method="post" action="/signup/">
 <fieldset>
 {% for field in form %}
 <div class="control-group
