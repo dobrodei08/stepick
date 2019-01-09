@@ -33,16 +33,12 @@ class SignForm(forms.Form):
 class AskForm(forms.Form):
     title = forms.CharField(max_length=100)
     text = forms.CharField(widget=forms.Textarea)
-    author = forms.IntegerField()
     def clean_text(self):
         text = self.cleaned_data['text']
         return text
     def clean_title(self):
         title = self.cleaned_data['title']
         return title
-    def clean_author(self):
-        author = self.cleaned_data['author']
-        return author
     def save(self, commit=True):
         question  = Question(**self.cleaned_data)
         question.save()
@@ -57,7 +53,7 @@ class AnswerForm(forms.Form):
     def clean_question(self):
         question_id = self.cleaned_data['question_id']
         return question_id
-    def save(self):
+    def save(self, commit=True):
         answer = Answer(**self.cleaned_data)
         answer.save()
         return answer

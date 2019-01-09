@@ -64,7 +64,9 @@ def oneqwest(request, pk):
         form = AnswerForm(request.POST)
         if form.is_valid():
             n = form.cleaned_data['question_id']
-            answ = form.save()
+            answ = form.save(commit=False)
+            answ.author = request.user
+            answ = answ.save()
             url = '/question/'+str(n)+'/'
             return HttpResponseRedirect(url)
     else:
@@ -80,12 +82,12 @@ def askfr(request):
         form = AskForm(request.POST)
         if form.is_valid():
             ask = form.save(commit=False)
-            form._user = request.user.pk
-            ask = form.save()
+            ask.author = request.user
             url = ask.get_url()
+            ask = ask.save()
             return HttpResponseRedirect(url)
     else:
-        form = AskForm(initial={'author': int(request.user.pk)})
+        form = AskForm()
     return render(request, 'ask_add.html', {
         'form': form
     })
